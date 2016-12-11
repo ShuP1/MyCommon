@@ -2,6 +2,10 @@
 
 MyCommon is a collection of usefull Classes
 * MultiLang - 10/12/2016
+* ConsoleIO - 11/12/2016  <sup>(from MyConsole)<sup/>
+* Binary
+* Logger
+* Strings
 
 ### Prerequisities
 

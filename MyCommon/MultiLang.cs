@@ -11,7 +11,7 @@ namespace MyCommon
     {
         private Dictionary<string, List<string>> multiDictionary = new Dictionary<string, List<string>>(); //List of phrases by key
         private List<string> langs = new List<string>(); //Readable langs list
-        
+
         public int langsCount { get { return langs.Count; } }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace MyCommon
         /// </summary>
         public string IDToLang(int lang)
         {
-            if(lang < langs.Count)
+            if (lang < langs.Count)
             {
                 return langs[lang];
             }
@@ -55,7 +55,7 @@ namespace MyCommon
         /// </summary>
         public bool TryLangToID(string lang, out int ID)
         {
-            for(int i = 0; i < langs.Count; i++)
+            for (int i = 0; i < langs.Count; i++)
             {
                 if (lang == langs[i])
                 {
@@ -66,7 +66,6 @@ namespace MyCommon
             ID = -1;
             return false;
         }
-
 
         public List<string> GetWords(string key)
         {
