@@ -170,7 +170,7 @@ namespace MyCommon
         private void ConsoleWrite(Log log)
         {
             if (haveConsole)
-                Console.Write(new ColorStrings(new ColorString(DateTime.UtcNow.ToString("[yyyy-MM-dd]", CultureInfo.InvariantCulture) + ": " + log.text, logForeColor[(int)log.type], logBackColor[(int)log.type])));
+                ConsoleIO.Write(new ColorStrings(new ColorString(DateTime.UtcNow.ToString("[yyyy-MM-dd]", CultureInfo.InvariantCulture) + ": " + log.text, logForeColor[(int)log.type], logBackColor[(int)log.type])));
         }
     }
 }
