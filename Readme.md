@@ -6,6 +6,7 @@ MyCommon is a collection of usefull Classes
 * Binary
 * Logger
 * Strings
+* XmlMananger - 13/12/2016
 
 ### Prerequisities
 
