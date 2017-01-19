@@ -10,7 +10,7 @@ namespace MyCommon
 {
     public class Logger
     {
-        public enum logType { dev, debug, info, warm, error, fatal }
+        public enum logType { dev = 0, debug, info, warm, error, fatal }
 
         public enum logConsole { normal, show, hide }
 
@@ -93,6 +93,13 @@ namespace MyCommon
                 }
             }
 
+			if (consoleType != ConsoleTypes.Any)
+			{
+				Console.BackgroundColor = logBackColor[0];
+				Console.ForegroundColor = logForeColor[0];
+				Console.Clear();
+			}
+
             int i = 0;
             while (File.Exists(logPath + "/" + DateTime.UtcNow.ToString("yyyy-MM-dd-", CultureInfo.InvariantCulture) + i + ".log")) { i++; }
             logPath = logPath + "/" + DateTime.UtcNow.ToString("yyyy-MM-dd-", CultureInfo.InvariantCulture) + i + ".log";
@@ -105,7 +112,7 @@ namespace MyCommon
         {
             _run = false;
             Updater.Join();
-        }
+		}
 
         public void ChangeLevel(logType level)
         {
