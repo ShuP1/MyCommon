@@ -123,5 +123,10 @@ namespace MyCommon.Generic
 				return false;
 			}
 		}
+
+		public Dictionary<TMain, TSecond>.Enumerator GetEnumerator()
+		{
+			return mainTable.GetEnumerator();
+		}
 	}
 }
