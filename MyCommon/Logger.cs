@@ -38,15 +38,17 @@ namespace MyCommon
         public bool run { get { return _run; } }
         private static bool _debug = false;
         private static bool _dev = false;
-        private bool haveConsole = false;
+
+		public enum ConsoleTypes { Any, System, IO };
+		private ConsoleTypes consoleType = ConsoleTypes.Any;
 
         /// <summary>
         /// Create log file and start logger thread
         /// </summary>
         /// <param name="LogPath">Absolute path to logs directory</param>
-        public void Initialise(string LogPath, ConsoleColor[] backColor, ConsoleColor[] foreColor, logType LogLevel, bool debug, bool dev, bool haveconsole = true)
+		public void Initialise(string LogPath, ConsoleColor[] backColor, ConsoleColor[] foreColor, logType LogLevel, bool debug, bool dev, ConsoleTypes consoletype = ConsoleTypes.Any)
         {
-            haveConsole = haveconsole;
+			consoleType = consoletype;
             logPath = LogPath;
             logBackColor = backColor;
             logForeColor = foreColor;
@@ -169,8 +171,20 @@ namespace MyCommon
 
         private void ConsoleWrite(Log log)
         {
-            if (haveConsole)
-                ConsoleIO.Write(new ColorStrings(new ColorString(DateTime.UtcNow.ToString("[yyyy-MM-dd]", CultureInfo.InvariantCulture) + ": " + log.text, logForeColor[(int)log.type], logBackColor[(int)log.type])));
+			string text = DateTime.UtcNow.ToString("[yyyy-MM-dd]", CultureInfo.InvariantCulture) + ": " + log.text;
+			switch (consoleType)
+			{
+				case ConsoleTypes.System:
+					Console.ResetColor();
+					Console.ForegroundColor = logForeColor[(int)log.type];
+					Console.BackgroundColor = logBackColor[(int)log.type];
+					Console.WriteLine(text);
+					break;
+
+				case ConsoleTypes.IO:
+					ConsoleIO.Write(new ColorStrings(new ColorString(text, logForeColor[(int)log.type], logBackColor[(int)log.type])));
+					break;
+			}
         }
     }
 }

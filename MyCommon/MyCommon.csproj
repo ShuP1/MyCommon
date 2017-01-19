@@ -48,9 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="XmlManager.cs" />
+    <Compile Include="Generic\LinkTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lang.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

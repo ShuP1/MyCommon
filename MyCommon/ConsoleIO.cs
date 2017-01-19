@@ -6,6 +6,7 @@ namespace MyCommon
     /// <summary>
     /// Manager Console with Async I/O
     /// </summary>
+	/// <remarks>No Mono Proof</remarks>
     public class ConsoleIO
     {
         private static string inputBuffer = "";
